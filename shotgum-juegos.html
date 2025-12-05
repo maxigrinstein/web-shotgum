@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ShotGum - Juegos</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+			rel="stylesheet"
+		/>
+
+		<style>
+			/* RESET Y VARIABLES CSS */
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			:root {
+				--color-dark: #000000;
+				--color-medium: #723465;
+				--color-purple: #e41c7e;
+				--color-pink: #a2cc3c;
+				--color-red: #f8f7e5;
+				--font-family: "Poppins", sans-serif;
+			}
+
+			body {
+				font-family: var(--font-family);
+				line-height: 1.6;
+				color: var(--color-red);
+				background: linear-gradient(
+					135deg,
+					var(--color-dark) 0%,
+					var(--color-medium) 50%,
+					var(--color-purple) 100%
+				);
+				min-height: 100vh;
+			}
+
+			.container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 20px;
+			}
+
+			/* HEADER */
+			.header {
+				padding: 20px 0;
+				text-align: center;
+			}
+
+			.logo {
+				max-height: 3rem;
+				width: auto;
+				filter: brightness(1) contrast(1.1);
+			}
+
+			/* MAIN CONTENT */
+			.game-section {
+				padding: 60px 0;
+				color: var(--color-red);
+				text-align: center;
+			}
+
+			.game-title {
+				font-size: 3.5rem;
+				font-weight: 700;
+				margin-bottom: 20px;
+				color: var(--color-red);
+				text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+			}
+
+			.game-subtitle {
+				font-size: 1.8rem;
+				font-weight: 600;
+				margin-bottom: 60px;
+				color: rgba(248, 247, 229, 0.9);
+			}
+
+			/* INSTRUCCIONES */
+			.instructions {
+				background: rgba(255, 255, 255, 0.1);
+				backdrop-filter: blur(10px);
+				border-radius: 30px;
+				padding: 50px;
+				margin-bottom: 60px;
+				box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+			}
+
+			.instructions h2 {
+				font-size: 2.5rem;
+				margin-bottom: 40px;
+				color: var(--color-red);
+			}
+
+			.step {
+				margin-bottom: 30px;
+				text-align: left;
+			}
+
+			.step h3 {
+				font-size: 1.5rem;
+				color: var(--color-pink);
+				margin-bottom: 15px;
+				display: flex;
+				align-items: center;
+				gap: 15px;
+			}
+
+			.step-number {
+				background: var(--color-purple);
+				color: var(--color-red);
+				width: 35px;
+				height: 35px;
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-weight: 700;
+				font-size: 1.1rem;
+			}
+
+			.step p {
+				font-size: 1.1rem;
+				color: rgba(248, 247, 229, 0.9);
+				margin-left: 50px;
+				line-height: 1.7;
+			}
+
+			.symbols-explanation {
+				background: rgba(255, 255, 255, 0.05);
+				border-radius: 20px;
+				padding: 30px;
+				margin: 20px 0;
+			}
+
+			.symbol-item {
+				display: flex;
+				align-items: center;
+				gap: 20px;
+				margin-bottom: 15px;
+				padding: 15px;
+				background: rgba(255, 255, 255, 0.1);
+				border-radius: 15px;
+			}
+
+			.symbol-icon {
+				font-size: 2rem;
+				width: 60px;
+				text-align: center;
+			}
+
+			.symbol-text {
+				font-size: 1.1rem;
+				color: var(--color-red);
+				font-weight: 600;
+			}
+
+			/* BOTONES DE JUEGO */
+			.game-buttons {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 40px;
+				margin: 60px 0;
+			}
+
+			.game-btn {
+				background: rgba(248, 247, 229, 0.1);
+				backdrop-filter: blur(10px);
+				border: 3px solid transparent;
+				border-radius: 35px;
+				padding: 50px 30px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				text-decoration: none;
+				color: var(--color-accent);
+				position: relative;
+				overflow: hidden;
+			}
+
+			.game-btn::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: linear-gradient(
+					45deg,
+					transparent,
+					rgba(255, 255, 255, 0.1),
+					transparent
+				);
+				opacity: 0;
+				transition: opacity 0.3s ease;
+			}
+
+			.game-btn:hover::before {
+				opacity: 1;
+			}
+
+			.game-btn.hacha {
+				border: 3px solid transparent;
+				background: linear-gradient(
+							rgba(255, 255, 255, 0.1),
+							rgba(255, 255, 255, 0.1)
+						)
+						padding-box,
+					linear-gradient(45deg, var(--color-pink), var(--color-red)) border-box;
+			}
+
+			.game-btn.hacha:hover {
+				background: linear-gradient(
+							rgba(180, 106, 145, 0.3),
+							rgba(230, 52, 98, 0.3)
+						)
+						padding-box,
+					linear-gradient(45deg, var(--color-pink), var(--color-red)) border-box;
+				transform: translateY(-10px);
+				box-shadow: 0 20px 40px rgba(230, 52, 98, 0.4);
+			}
+
+			.game-btn.cuchillo {
+				border: 3px solid transparent;
+				background: linear-gradient(
+							rgba(255, 255, 255, 0.1),
+							rgba(255, 255, 255, 0.075)
+						)
+						padding-box,
+					linear-gradient(45deg, var(--color-purple), var(--color-medium))
+						border-box;
+			}
+
+			.game-btn.cuchillo:hover {
+				background: linear-gradient(
+							rgba(105, 78, 141, 0.3),
+							rgba(58, 42, 90, 0.3)
+						)
+						padding-box,
+					linear-gradient(45deg, var(--color-purple), var(--color-medium))
+						border-box;
+				transform: translateY(-10px);
+				box-shadow: 0 20px 40px rgba(105, 78, 141, 0.4);
+			}
+
+			.btn-icon {
+				font-size: 4rem;
+				margin-bottom: 20px;
+				display: block;
+			}
+
+			.btn-title {
+				font-size: 1.8rem;
+				font-weight: 700;
+				margin-bottom: 10px;
+			}
+
+			.btn-subtitle {
+				font-size: 1.1rem;
+				opacity: 0.8;
+			}
+
+			/* PREGUNTA DISPLAY */
+			.question-display {
+				background: rgba(248, 247, 229, 0.15);
+				backdrop-filter: blur(15px);
+				border-radius: 35px;
+				padding: 40px;
+				margin: 40px 0;
+				min-height: 200px;
+				display: none;
+				border: 2px solid rgba(248, 247, 229, 0.2);
+			}
+
+			.question-display.show {
+				display: block;
+				animation: fadeInUp 0.6s ease;
+			}
+
+			.question-text {
+				font-size: 1.5rem;
+				font-weight: 600;
+				color: var(--color-red);
+				line-height: 1.6;
+				margin-bottom: 20px;
+			}
+
+			.question-type {
+				font-size: 1rem;
+				color: var(--color-pink);
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+			}
+
+			.new-question-btn {
+				background: linear-gradient(
+					45deg,
+					var(--color-purple),
+					var(--color-pink)
+				);
+				color: var(--color-red);
+				border: none;
+				padding: 15px 30px;
+				border-radius: 60px;
+				font-family: var(--font-family);
+				font-weight: 600;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				margin-top: 20px;
+			}
+
+			.new-question-btn:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 10px 25px rgba(228, 28, 126, 0.4);
+			}
+
+			/* VOLVER BUTTON */
+			.back-btn {
+				position: fixed;
+				top: 30px;
+				left: 30px;
+				background: rgba(248, 247, 229, 0.1);
+				backdrop-filter: blur(10px);
+				color: var(--color-red);
+				border: 2px solid rgba(248, 247, 229, 0.3);
+				padding: 12px 20px;
+				border-radius: 60px;
+				text-decoration: none;
+				font-weight: 600;
+				transition: all 0.3s ease;
+				z-index: 1000;
+			}
+
+			.back-btn:hover {
+				background: rgba(248, 247, 229, 0.2);
+				transform: translateY(-2px);
+			}
+
+			/* ANIMACIONES */
+			@keyframes fadeInUp {
+				from {
+					opacity: 0;
+					transform: translateY(30px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			.fade-in {
+				animation: fadeInUp 1s ease;
+			}
+
+			/* RESPONSIVE */
+			@media (max-width: 768px) {
+				.game-title {
+					font-size: 2.5rem;
+				}
+
+				.game-subtitle {
+					font-size: 1.4rem;
+				}
+
+				.instructions {
+					padding: 30px 20px;
+				}
+
+				.instructions h2 {
+					font-size: 2rem;
+				}
+
+				.game-buttons {
+					grid-template-columns: 1fr;
+					gap: 30px;
+				}
+
+				.btn-icon {
+					font-size: 3rem;
+				}
+
+				.btn-title {
+					font-size: 1.5rem;
+				}
+
+				.step h3 {
+					font-size: 1.3rem;
+				}
+
+				.symbol-item {
+					flex-direction: column;
+					text-align: center;
+					gap: 10px;
+				}
+
+				.back-btn {
+					top: 20px;
+					left: 20px;
+					padding: 10px 15px;
+				}
+			}
+
+			@media (max-width: 480px) {
+				.container {
+					padding: 0 15px;
+				}
+
+				.game-title {
+					font-size: 2rem;
+				}
+
+				.instructions {
+					padding: 25px 15px;
+				}
+
+				.question-text {
+					font-size: 1.3rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- BOTON VOLVER -->
+		<a href="shotgum-landing.html" class="back-btn">← Volver</a>
+
+		<!-- HEADER -->
+		<header class="header">
+			<div class="container">
+				<img src="logo.png" alt="ShotGum" class="logo" />
+			</div>
+		</header>
+
+		<!-- SECCION PRINCIPAL -->
+		<section class="game-section">
+			<div class="container">
+				<h1 class="game-title fade-in">SHOTGUM</h1>
+				<p class="game-subtitle fade-in">
+					¿Rompés el hielo o afilás la previa?
+				</p>
+				<!-- BOTONES DE JUEGO -->
+				<div class="game-buttons">
+					<button class="game-btn hacha" onclick="getQuestion('hacha')">
+						<span class="btn-icon">🪓</span>
+						<div class="btn-title">ROMPEHIELOS</div>
+						<div class="btn-subtitle">Preguntas para conocerse</div>
+					</button>
+
+					<button class="game-btn cuchillo" onclick="getQuestion('cuchillo')">
+						<span class="btn-icon">🔪</span>
+						<div class="btn-title">FILOSAS</div>
+						<div class="btn-subtitle">Preguntas picantes</div>
+					</button>
+				</div>
+
+				<!-- DISPLAY DE PREGUNTAS -->
+				<div id="questionDisplay" class="question-display">
+					<div class="question-type" id="questionType"></div>
+					<div class="question-text" id="questionText"></div>
+					<button class="new-question-btn" onclick="getNewQuestion()">
+						Nueva pregunta
+					</button>
+				</div>
+
+				<!-- INSTRUCCIONES -->
+				<div class="instructions fade-in">
+					<h2>¿Cómo se juega?</h2>
+
+					<div class="step">
+						<h3><span class="step-number">1</span>Elegí una gomita al azar</h3>
+						<p>Cada gomita ShotGUM tiene un símbolo:</p>
+
+						<div class="symbols-explanation">
+							<div class="symbol-item">
+								<span class="symbol-icon">🪓</span>
+								<span class="symbol-text">Hacha → Rompé el hielo</span>
+							</div>
+							<div class="symbol-item">
+								<span class="symbol-icon">🔪</span>
+								<span class="symbol-text">Cuchillo → Afilá la previa</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="step">
+						<h3>
+							<span class="step-number">2</span>Comé tu gomita y empezá la ronda
+						</h3>
+					</div>
+
+					<div class="step">
+						<h3>
+							<span class="step-number">3</span>Buscá la pregunta del símbolo
+							que te tocó
+						</h3>
+						<p>
+							<strong>Hacha (rompehielos):</strong> preguntas para activar la
+							charla y conocerse.
+						</p>
+						<p>
+							<strong>Cuchillo (filosas):</strong> preguntas más picantes y
+							atrevidas.
+						</p>
+					</div>
+
+					<div class="step">
+						<h3><span class="step-number">4</span>Respondé lo que te toque</h3>
+					</div>
+
+					<div class="step">
+						<h3><span class="step-number">5</span>Pasen la ronda</h3>
+						<p>Todos prueban, todos juegan.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<script>
+			// BANCOS DE PREGUNTAS
+			const questions = {
+				hacha: [
+					"¿Cuál es tu recuerdo más vergonzoso de la infancia?",
+					"Si pudieras cenar con cualquier persona viva o muerta, ¿quién sería?",
+					"¿Cuál es tu mayor miedo irracional?",
+					"¿Qué talento oculto tenés que nadie sabe?",
+					"¿Cuál fue tu primera impresión de la persona que tenés a tu derecha?",
+					"¿Qué harías si ganaras la lotería mañana?",
+					"¿Cuál es la mentira más grande que dijiste de chico?",
+					"¿Con qué personaje de ficción te identificás más?",
+					"¿Cuál es tu tradición familiar más rara?",
+					"¿Qué trabajo te gustaría tener por un día?",
+					"¿Cuál es tu canción guilty pleasure?",
+					"¿Qué superpoder elegirías y por qué?",
+					"¿Cuál es tu comida de comfort favorita?",
+					"¿Qué era lo que más te daba miedo cuando eras chico?",
+					"¿Cuál es el mejor consejo que te dieron?",
+					"¿Qué lugar del mundo te gustaría visitar?",
+					"¿Cuál es tu ritual matutino más extraño?",
+					"¿Qué película podés ver mil veces sin cansarte?",
+					"¿Cuál es tu hobbie más raro?",
+					"¿Qué te hubiera gustado estudiar si no fuera lo que estudiaste?",
+				],
+				cuchillo: [
+					"¿Cuál es tu fantasía más loca?",
+					"¿Alguna vez estuviste enamorado/a de alguien de este grupo?",
+					"¿Cuál es el lugar más raro donde tuviste relaciones?",
+					"¿Con quién de este grupo te irías de viaje a una isla desierta?",
+					"¿Alguna vez mandaste un mensaje hot a la persona equivocada?",
+					"¿Cuál es tu posición favorita?",
+					"¿Alguna vez tuviste un encuentro de una noche que te arrepentiste?",
+					"¿Cuál es tu mayor turn on?",
+					"¿Alguna vez fingiste un orgasmo?",
+					"¿Con cuántas personas estuviste íntimamente?",
+					"¿Cuál es la mentira más grande que le dijiste a una pareja?",
+					"¿Alguna vez engañaste o te engañaron?",
+					"¿Cuál es tu juego previo favorito?",
+					"¿Alguna vez tuviste ganas de alguien que no debías?",
+					"¿Cuál es tu parte favorita del cuerpo de tu pareja?",
+					"¿Alguna vez usaste un juguete sexual?",
+					"¿Cuál es la cosa más atrevida que hiciste por amor?",
+					"¿Alguna vez tuviste un trío?",
+					"¿Cuál es tu mayor arrepentimiento amoroso?",
+					"¿Con quién de este grupo harías un trío?",
+					"¿Alguna vez te masturbaste pensando en alguien que conocés?",
+					"¿Cuál es la parte de tu cuerpo de la que estás más orgulloso/a?",
+				],
+			};
+
+			let currentQuestionType = "";
+
+			// OBTENER PREGUNTA ALEATORIA
+			function getQuestion(type) {
+				currentQuestionType = type;
+				const questionBank = questions[type];
+				const randomIndex = Math.floor(Math.random() * questionBank.length);
+				const question = questionBank[randomIndex];
+
+				displayQuestion(type, question);
+			}
+
+			// MOSTRAR PREGUNTA
+			function displayQuestion(type, question) {
+				const display = document.getElementById("questionDisplay");
+				const questionType = document.getElementById("questionType");
+				const questionText = document.getElementById("questionText");
+
+				questionType.textContent =
+					type === "hacha" ? "🪓 ROMPEHIELOS" : "🔪 FILOSA";
+				questionText.textContent = question;
+
+				display.classList.add("show");
+
+				// Scroll suave hacia la pregunta
+				display.scrollIntoView({ behavior: "smooth", block: "center" });
+			}
+
+			// NUEVA PREGUNTA DEL MISMO TIPO
+			function getNewQuestion() {
+				if (currentQuestionType) {
+					getQuestion(currentQuestionType);
+				}
+			}
+
+			// ANIMACIONES AL CARGAR
+			document.addEventListener("DOMContentLoaded", function () {
+				const elements = document.querySelectorAll(".fade-in");
+				elements.forEach((element, index) => {
+					setTimeout(() => {
+						element.style.animationDelay = index * 0.2 + "s";
+					}, 100);
+				});
+			});
+
+			// EFECTOS DE SONIDO (opcional - se puede agregar después)
+			function playSound(type) {
+				// Aquí se pueden agregar efectos de sonido
+				console.log(`Reproduciendo sonido para: ${type}`);
+			}
+		</script>
+	</body>
+</html>
