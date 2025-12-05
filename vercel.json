@@ -1,0 +1,35 @@
+{
+	"version": 2,
+	"builds": [
+		{
+			"src": "*.html",
+			"use": "@vercel/static"
+		},
+		{
+			"src": "*.css",
+			"use": "@vercel/static"
+		},
+		{
+			"src": "*.js",
+			"use": "@vercel/static"
+		},
+		{
+			"src": "*.{jpg,jpeg,png,gif,svg,ico}",
+			"use": "@vercel/static"
+		}
+	],
+	"routes": [
+		{
+			"src": "/",
+			"dest": "/index.html"
+		},
+		{
+			"src": "/juegos",
+			"dest": "/shotgum-juegos.html"
+		},
+		{
+			"src": "/landing",
+			"dest": "/shotgum-landing.html"
+		}
+	]
+}

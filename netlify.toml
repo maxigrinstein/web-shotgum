@@ -1,0 +1,40 @@
+# Netlify Configuration
+[build]
+  publish = "."
+  command = "echo 'No build required'"
+
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/juegos"
+  to = "/shotgum-juegos.html"
+  status = 200
+
+[[redirects]]
+  from = "/landing"
+  to = "/shotgum-landing.html"
+  status = 200
+
+# Headers for better caching
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.{jpg,jpeg,png,gif,svg,ico}"
+  [headers.values]
+    Cache-Control = "max-age=31536000, immutable"
