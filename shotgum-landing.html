@@ -79,12 +79,7 @@
 			/* HERO SECTION */
 			.hero {
 				min-height: 100vh;
-				background: linear-gradient(
-					135deg,
-					var(--color-dark) 0%,
-					var(--color-medium) 50%,
-					var(--color-purple) 100%
-				);
+				background: #f8f7e6;
 				display: flex;
 				align-items: center;
 				position: relative;
@@ -102,15 +97,14 @@
 			.hero-text h1 {
 				font-size: 4rem;
 				font-weight: 700;
-				color: white;
-				margin-bottom: 20px;
+				color: rgb(0, 0, 0);
 				line-height: 1.1;
 			}
 
 			.logo {
-				max-height: 10rem;
-				width: auto;
-				filter: brightness(1) contrast(1.1);
+				max-height: 17rem;
+
+				
 				transition: all 0.3s ease;
 			}
 
@@ -121,7 +115,7 @@
 
 			.hero-text p {
 				font-size: 1.2rem;
-				color: rgba(255, 255, 255, 0.9);
+				color: rgb(0, 0, 0);
 				margin-bottom: 30px;
 			}
 
@@ -266,14 +260,41 @@
 					var(--color-purple),
 					var(--color-pink)
 				);
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
 				border-radius: 20px;
 				display: flex;
-				align-items: center;
+				align-items: flex-end;
 				justify-content: center;
 				color: white;
 				font-size: 1.5rem;
 				font-weight: 600;
 				box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+				position: relative;
+				overflow: hidden;
+			}
+
+			.product-image::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: linear-gradient(
+					to bottom,
+					transparent 60%,
+					rgba(0, 0, 0, 0.7) 100%
+				);
+				z-index: 1;
+			}
+
+			.product-image > * {
+				position: relative;
+				z-index: 2;
+				padding: 20px;
+				text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 			}
 
 			.product-content h3 {
@@ -768,7 +789,7 @@
 				<div class="hero-content">
 					<div class="hero-text fade-in">
 						<h1>
-							<img src="logo.png" alt="ShotGum" class="logo" />
+							<img src="ShotGUM_fondo_claro_sin_fondo.png" alt="ShotGum" class="logo" />
 						</h1>
 						<p>
 							Las gomitas con alcohol perfectas para tus previas y juntadas
@@ -785,16 +806,14 @@
 							<div
 								class="slider-image active"
 								data-slide="0"
-								style="
-									background-image: url('8fdb9bdb-aa6c-4690-a4f8-ff67475f4a5c.jpg');
-								"
+								style="background-image: url('ShotGUM-limón-mockup.jpg')"
 							></div>
 							<div
 								class="slider-image"
 								data-slide="1"
 								style="
 									display: none;
-									background-image: url('f1f38304-0a9c-4ba6-8315-a6c7e5de18bb.jpg');
+									background-image: url('ShotGUM-Frutilla-slider.png');
 								"
 							></div>
 						</div>
@@ -825,7 +844,8 @@
 					>
 						<h3>Quiero jugar</h3>
 						<p>
-							Descubrí nuestros juegos exclusivos para disfrutar con amigos.
+							Descubrí el juego exclusivo ShotGum para afilar tu previa o romper
+							el hielo
 						</p>
 					</div>
 				</div>
@@ -845,26 +865,33 @@
 				</div>
 
 				<div class="product-item fade-in">
-					<div class="product-image">ShotGum Tropical</div>
+					<div
+						class="product-image"
+						style="background-image: url('ShotGUM-limon.jpg')"
+					></div>
 					<div class="product-content">
-						<h3>ShotGum Tropical</h3>
+						<h3>ShotGum Limón</h3>
 						<p>
-							Una explosión de sabores tropicales con un toque de alcohol que te
-							transportará a las mejores vacaciones. Perfecto para compartir en
-							reuniones al aire libre y celebraciones especiales.
+							Si estás buscando un gusto un poco más ácido para que tus gomitas
+							con alcohol tengan un toque adicional, ShotGum sabor limón es
+							ideal para que tus juntadas sean aún más especiales.
 						</p>
 						<a href="#cta" class="btn btn-secondary">Ver más</a>
 					</div>
 				</div>
 
 				<div class="product-item fade-in">
-					<div class="product-image">ShotGum Berry Blast</div>
+					<div
+						class="product-image"
+						style="background-image: url('ShotGUM-frutilla.jpg')"
+					></div>
 					<div class="product-content">
-						<h3>ShotGum Berry Blast</h3>
+						<h3>ShotGum Frutilla</h3>
 						<p>
-							La combinación perfecta de frutos rojos con un kick de alcohol que
-							despierta todos tus sentidos. Ideal para las previas más
-							divertidas y momentos inolvidables entre amigos.
+							Para esas juntadas donde querés algo rico, frutal y con un toque
+							de alcohol, ShotGum sabor frutilla está diseñado específicamente
+							para compartir con amigos y elevar ese momento de disfrute a otro
+							nivel.
 						</p>
 						<a href="#cta" class="btn btn-secondary">Ver más</a>
 					</div>
@@ -878,17 +905,20 @@
 				<div class="about-content fade-in">
 					<h2>Sobre nosotros</h2>
 					<p>
-						En ShotGum creemos que los mejores momentos se viven en compañía.
-						Por eso creamos estas gomitas únicas que combinan diversión, sabor y
-						la calidad que merecés.
+						Hola, somos Lucía y Facu, dos jóvenes emprendedores que buscan dejar
+						una huella en la forma que tienen los jóvenes argentinos de
+						disfrutar entre sí; queremos estar presentes en sus planes y
+						celebraciones, y ayudar a que formen espacios seguros donde se
+						sientan auténticos.
 					</p>
 					<p>
-						Nacimos de la pasión por reinventar la forma de compartir entre
-						amigos, creando productos innovadores que transforman cualquier
-						encuentro en una experiencia memorable.
+						Por eso, como creemos que cada encuentro entre amigos puede
+						transformarse en un recuerdo único, creamos ShotGum; una marca de
+						gomitas saborizadas con alcohol que están diseñadas específicamente
+						para que los espacios de disfrute social se eleven aún más.
 					</p>
 					<p>
-						Cada ShotGum está elaborado con ingredientes premium y el compromiso
+						Cada gomita está elaborada con ingredientes premium y el compromiso
 						de brindar momentos únicos que van más allá del sabor.
 					</p>
 
@@ -901,7 +931,7 @@
 						<div class="value-item fade-in">
 							<div class="value-icon">⭐</div>
 							<h4>Calidad</h4>
-							<p>Ingredientes premium</p>
+							<p>Propuesta fresca e innovadora</p>
 						</div>
 						<div class="value-item fade-in">
 							<div class="value-icon">🤝</div>
@@ -1082,6 +1112,7 @@
 		<!-- BOTON FLOTANTE -->
 		<a
 			class="floating-btn"
+			
 			href="https://wa.me/5491161485390?text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20ShotGum"
 			target="_blank"
 			title="Contactanos por WhatsApp"
