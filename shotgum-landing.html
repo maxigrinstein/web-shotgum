@@ -18,11 +18,11 @@
 			}
 
 			:root {
-				--color-dark: #1f1c2c;
-				--color-medium: #3a2a5a;
-				--color-purple: #694e8d;
-				--color-pink: #b46a91;
-				--color-red: #e63462;
+				--color-dark: #414040;
+				--color-medium: #f8f7e6;
+				--color-purple: #a1c73e;
+				--color-pink: #d2115f;
+				--color-red: #d8da00;
 				--font-family: "Poppins", sans-serif;
 			}
 
@@ -65,8 +65,8 @@
 			.btn-secondary {
 				background: linear-gradient(
 					45deg,
-					var(--color-purple),
-					var(--color-medium)
+					var(--color-red),
+					var(--color-purple)
 				);
 				color: white;
 			}
@@ -104,7 +104,6 @@
 			.logo {
 				max-height: 17rem;
 
-				
 				transition: all 0.3s ease;
 			}
 
@@ -176,7 +175,7 @@
 			/* MENU DE ACCIONES */
 			.actions-menu {
 				padding: 80px 0;
-				background: var(--color-light);
+				background: var(--color-dark);
 			}
 
 			.actions-grid {
@@ -186,20 +185,17 @@
 			}
 
 			.action-card {
-				background: var(--color-light);
-				padding: 40px 30px;
+				background: linear-gradient(45deg, var(--color-purple), var(--color-pink));
+				padding: 40px;
 				border-radius: 20px;
 				text-align: center;
-				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-				transition: all 0.3s ease;
 				cursor: pointer;
-				border: 3px solid transparent;
+				transition: all 0.3s ease;
 			}
 
 			.action-card:hover {
-				transform: translateY(-10px);
-				border-color: var(--color-pink);
-				box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+				transform: translateY(-5px);
+				box-shadow: 0 15px 35px rgba(230, 52, 98, 0.3);
 			}
 
 			.action-card h3 {
@@ -216,7 +212,7 @@
 			/* SECCION PRODUCTOS */
 			.products {
 				padding: 100px 0;
-				background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+				background: var(--color-medium);
 			}
 
 			.section-title {
@@ -226,13 +222,13 @@
 
 			.section-title h2 {
 				font-size: 3rem;
-				color: var(--color-dark);
+				color: black;
 				margin-bottom: 20px;
 			}
 
 			.section-title p {
 				font-size: 1.1rem;
-				color: #666;
+				color: black;
 				max-width: 600px;
 				margin: 0 auto;
 			}
@@ -299,13 +295,13 @@
 
 			.product-content h3 {
 				font-size: 2.2rem;
-				color: var(--color-dark);
+				color: black;
 				margin-bottom: 20px;
 			}
 
 			.product-content p {
 				font-size: 1.1rem;
-				color: #666;
+				color: black;
 				margin-bottom: 30px;
 				line-height: 1.7;
 			}
@@ -318,7 +314,7 @@
 					var(--color-purple),
 					var(--color-medium)
 				);
-				color: white;
+				color: black;
 			}
 
 			.about-content {
@@ -375,7 +371,7 @@
 			}
 
 			.cta-item {
-				background: linear-gradient(45deg, var(--color-red), var(--color-pink));
+				background: linear-gradient(45deg, var(--color-purple), var(--color-pink));
 				padding: 40px;
 				border-radius: 20px;
 				text-align: center;
@@ -396,7 +392,7 @@
 			/* MAPA DE PUNTOS DE VENTA */
 			.map-section {
 				padding: 100px 0;
-				background: #f8f9fa;
+				background: var(--color-medium);
 			}
 
 			.search-container {
@@ -482,7 +478,7 @@
 			/* FORMULARIO DE CONTACTO */
 			.contact {
 				padding: 100px 0;
-				background: var(--color-light);
+				background: var(--color-medium);
 			}
 
 			.contact-form {
@@ -521,11 +517,11 @@
 				padding: 100px 0;
 				background: linear-gradient(
 					135deg,
-					var(--color-dark) 0%,
-					var(--color-medium) 50%,
-					var(--color-purple) 100%
+					
+					var(--color-purple),
+					var(--color-pink)
 				);
-				color: white;
+				color: black;
 			}
 
 			.reels-grid {
@@ -789,7 +785,11 @@
 				<div class="hero-content">
 					<div class="hero-text fade-in">
 						<h1>
-							<img src="ShotGUM_fondo_claro_sin_fondo.png" alt="ShotGum" class="logo" />
+							<img
+								src="ShotGUM_fondo_claro_sin_fondo.png"
+								alt="ShotGum"
+								class="logo"
+							/>
 						</h1>
 						<p>
 							Las gomitas con alcohol perfectas para tus previas y juntadas
@@ -1112,7 +1112,6 @@
 		<!-- BOTON FLOTANTE -->
 		<a
 			class="floating-btn"
-			
 			href="https://wa.me/5491161485390?text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20ShotGum"
 			target="_blank"
 			title="Contactanos por WhatsApp"
@@ -1327,6 +1326,20 @@
 
 			// Inicializar animaciones
 			animateOnScroll();
+
+			// Cambiar logo en mobile
+			function updateLogo() {
+				const logo = document.querySelector(".logo");
+				if (window.innerWidth <= 768) {
+					logo.src = "shotGUM_ultimo_sin_fondo.png";
+				} else {
+					logo.src = "ShotGUM_fondo_claro_sin_fondo.png";
+				}
+			}
+
+			// Ejecutar al cargar y al cambiar tamaño de ventana
+			updateLogo();
+			window.addEventListener("resize", updateLogo);
 		</script>
 	</body>
 </html>
