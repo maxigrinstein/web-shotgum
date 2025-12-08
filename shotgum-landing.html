@@ -185,7 +185,11 @@
 			}
 
 			.action-card {
-				background: linear-gradient(45deg, var(--color-purple), var(--color-pink));
+				background: linear-gradient(
+					45deg,
+					var(--color-purple),
+					var(--color-pink)
+				);
 				padding: 40px;
 				border-radius: 20px;
 				text-align: center;
@@ -371,7 +375,11 @@
 			}
 
 			.cta-item {
-				background: linear-gradient(45deg, var(--color-purple), var(--color-pink));
+				background: linear-gradient(
+					45deg,
+					var(--color-purple),
+					var(--color-pink)
+				);
 				padding: 40px;
 				border-radius: 20px;
 				text-align: center;
@@ -517,7 +525,6 @@
 				padding: 100px 0;
 				background: linear-gradient(
 					135deg,
-					
 					var(--color-purple),
 					var(--color-pink)
 				);
@@ -665,7 +672,7 @@
 				}
 
 				.logo {
-					max-height: 2.5rem;
+					max-height: 8rem;
 				}
 
 				.hero-slider {
@@ -737,7 +744,7 @@
 				}
 
 				.logo {
-					max-height: 2rem;
+					max-height: 6rem;
 				}
 
 				.hero-text p {
@@ -1331,13 +1338,14 @@
 			function updateLogo() {
 				const logo = document.querySelector(".logo");
 				if (window.innerWidth <= 768) {
-					logo.src = "shotGUM_ultimo_sin_fondo.png";
+					logo.src = "ShotGUM_fondo_claro_sin_fondo.png";
 				} else {
 					logo.src = "ShotGUM_fondo_claro_sin_fondo.png";
 				}
 			}
 
 			// Ejecutar al cargar y al cambiar tamaño de ventana
+			window.addEventListener("DOMContentLoaded", updateLogo);
 			updateLogo();
 			window.addEventListener("resize", updateLogo);
 		</script>
