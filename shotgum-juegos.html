@@ -18,11 +18,11 @@
 			}
 
 			:root {
-				--color-dark: #000000;
-				--color-medium: #723465;
-				--color-purple: #e41c7e;
-				--color-pink: #a2cc3c;
-				--color-red: #f8f7e5;
+				--color-dark: #414040;
+				--color-medium: #f8f7e6;
+				--color-purple: #a1c73e;
+				--color-pink: #d2115f;
+				--color-red: #d8da00;
 				--font-family: "Poppins", sans-serif;
 			}
 
@@ -31,9 +31,8 @@
 				line-height: 1.6;
 				color: var(--color-red);
 				background: linear-gradient(
-					135deg,
 					var(--color-dark) 0%,
-					var(--color-medium) 50%,
+					var(--color-pink) 75%,
 					var(--color-purple) 100%
 				);
 				min-height: 100vh;
@@ -52,9 +51,9 @@
 			}
 
 			.logo {
-				max-height: 3rem;
+				max-height: 15rem;
 				width: auto;
-				filter: brightness(1) contrast(1.1);
+			
 			}
 
 			/* MAIN CONTENT */
@@ -102,7 +101,7 @@
 
 			.step h3 {
 				font-size: 1.5rem;
-				color: var(--color-pink);
+				color: var(--color-medium);
 				margin-bottom: 15px;
 				display: flex;
 				align-items: center;
@@ -110,7 +109,7 @@
 			}
 
 			.step-number {
-				background: var(--color-purple);
+				background: var(--color-dark);
 				color: var(--color-red);
 				width: 35px;
 				height: 35px;
@@ -175,7 +174,7 @@
 				cursor: pointer;
 				transition: all 0.3s ease;
 				text-decoration: none;
-				color: var(--color-accent);
+				color: var(--color-medium);
 				position: relative;
 				overflow: hidden;
 			}
@@ -203,46 +202,24 @@
 
 			.game-btn.hacha {
 				border: 3px solid transparent;
-				background: linear-gradient(
-							rgba(255, 255, 255, 0.1),
-							rgba(255, 255, 255, 0.1)
-						)
-						padding-box,
-					linear-gradient(45deg, var(--color-pink), var(--color-red)) border-box;
+				background: var(--color-pink);
 			}
 
 			.game-btn.hacha:hover {
-				background: linear-gradient(
-							rgba(180, 106, 145, 0.3),
-							rgba(230, 52, 98, 0.3)
-						)
-						padding-box,
-					linear-gradient(45deg, var(--color-pink), var(--color-red)) border-box;
+				background: var(--color-pink);
 				transform: translateY(-10px);
 				box-shadow: 0 20px 40px rgba(230, 52, 98, 0.4);
 			}
 
 			.game-btn.cuchillo {
 				border: 3px solid transparent;
-				background: linear-gradient(
-							rgba(255, 255, 255, 0.1),
-							rgba(255, 255, 255, 0.075)
-						)
-						padding-box,
-					linear-gradient(45deg, var(--color-purple), var(--color-medium))
-						border-box;
+				background: var(--color-purple);
 			}
 
 			.game-btn.cuchillo:hover {
-				background: linear-gradient(
-							rgba(105, 78, 141, 0.3),
-							rgba(58, 42, 90, 0.3)
-						)
-						padding-box,
-					linear-gradient(45deg, var(--color-purple), var(--color-medium))
-						border-box;
+				background: var(--color-purple);
 				transform: translateY(-10px);
-				box-shadow: 0 20px 40px rgba(105, 78, 141, 0.4);
+				box-shadow: 0 20px 40px rgba(11, 102, 26, 0.4);
 			}
 
 			.btn-icon {
@@ -282,14 +259,14 @@
 			.question-text {
 				font-size: 1.5rem;
 				font-weight: 600;
-				color: var(--color-red);
+				color: var(--color-medium);
 				line-height: 1.6;
 				margin-bottom: 20px;
 			}
 
 			.question-type {
 				font-size: 1rem;
-				color: var(--color-pink);
+				color: var(--color-medium);
 				font-weight: 700;
 				text-transform: uppercase;
 				letter-spacing: 1px;
@@ -297,11 +274,11 @@
 
 			.new-question-btn {
 				background: linear-gradient(
-					45deg,
+					90deg,
 					var(--color-purple),
 					var(--color-pink)
 				);
-				color: var(--color-red);
+				color: var(--color-medium);
 				border: none;
 				padding: 15px 30px;
 				border-radius: 60px;
@@ -426,17 +403,17 @@
 		<!-- BOTON VOLVER -->
 		<a href="shotgum-landing.html" class="back-btn">← Volver</a>
 
-		<!-- HEADER -->
-		<header class="header">
-			<div class="container">
-				<img src="logo.png" alt="ShotGum" class="logo" />
-			</div>
-		</header>
 
 		<!-- SECCION PRINCIPAL -->
 		<section class="game-section">
 			<div class="container">
-				<h1 class="game-title fade-in">SHOTGUM</h1>
+				<h1 class="game-title fade-in">
+					<img
+						src="ShotGUM_fondo_claro_sin_fondo.png"
+						alt="ShotGum"
+						class="logo"
+					/>
+				</h1>
 				<p class="game-subtitle fade-in">
 					¿Rompés el hielo o afilás la previa?
 				</p>
@@ -543,28 +520,12 @@
 					"¿Qué te hubiera gustado estudiar si no fuera lo que estudiaste?",
 				],
 				cuchillo: [
-					"¿Cuál es tu fantasía más loca?",
 					"¿Alguna vez estuviste enamorado/a de alguien de este grupo?",
-					"¿Cuál es el lugar más raro donde tuviste relaciones?",
 					"¿Con quién de este grupo te irías de viaje a una isla desierta?",
-					"¿Alguna vez mandaste un mensaje hot a la persona equivocada?",
-					"¿Cuál es tu posición favorita?",
-					"¿Alguna vez tuviste un encuentro de una noche que te arrepentiste?",
-					"¿Cuál es tu mayor turn on?",
-					"¿Alguna vez fingiste un orgasmo?",
-					"¿Con cuántas personas estuviste íntimamente?",
 					"¿Cuál es la mentira más grande que le dijiste a una pareja?",
 					"¿Alguna vez engañaste o te engañaron?",
-					"¿Cuál es tu juego previo favorito?",
-					"¿Alguna vez tuviste ganas de alguien que no debías?",
-					"¿Cuál es tu parte favorita del cuerpo de tu pareja?",
-					"¿Alguna vez usaste un juguete sexual?",
 					"¿Cuál es la cosa más atrevida que hiciste por amor?",
-					"¿Alguna vez tuviste un trío?",
 					"¿Cuál es tu mayor arrepentimiento amoroso?",
-					"¿Con quién de este grupo harías un trío?",
-					"¿Alguna vez te masturbaste pensando en alguien que conocés?",
-					"¿Cuál es la parte de tu cuerpo de la que estás más orgulloso/a?",
 				],
 			};
 
